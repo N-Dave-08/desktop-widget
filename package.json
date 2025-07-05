@@ -1,0 +1,24 @@
+{
+  "name": "my-widget",
+  "version": "1.0.0",
+  "description": "",
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "dev": "electronmon .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "node-addon-api": "^8.4.0",
+    "node-gyp": "^11.2.0",
+    "node-gyp-build": "^4.8.4"
+  },
+  "devDependencies": {
+    "electron": "^37.2.0",
+    "electron-reload": "^2.0.0-alpha.1",
+    "electronmon": "^2.0.3"
+  }
+}

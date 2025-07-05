@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>My Widget</title>
+  
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      margin: 0;
+      color: white;
+      font-family: Arial, sans-serif;
+      user-select: none;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .widget-container {
+      width: 300px;
+      height: 200px;
+      background: rgba(0, 0, 0, 0.3);
+      color: white;
+      border-radius: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="widget-container">
+    <h2>Hello, I'm a desktop widget!</h2>
+    <p>Put your widget content here.</p>
+  </div>
+</body>
+<script>
+// Custom drag logic for Electron desktop widget using IPC
+let isDragging = false;
+let startX, startY;
+
+window.addEventListener('mousedown', (e) => {
+  isDragging = true;
+  startX = e.screenX;
+  startY = e.screenY;
+});
+
+window.addEventListener('mousemove', (e) => {
+  if (isDragging) {
+    const dx = e.screenX - startX;
+    const dy = e.screenY - startY;
+    window.electronAPI.dragWindow(dx, dy);
+    startX = e.screenX;
+    startY = e.screenY;
+  }
+});
+
+window.addEventListener('mouseup', () => {
+  isDragging = false;
+});
+</script>
+</html>
